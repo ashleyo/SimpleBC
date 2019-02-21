@@ -41,7 +41,7 @@ namespace SimpleBC
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.scan.co.uk");
+            System.Diagnostics.Process.Start("https://github.com/ashleyo/SimpleBC/blob/master/README.md");
         }
     }
 
