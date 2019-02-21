@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SimpleBC">
+    
+    <Style x:Key="LBL" TargetType="Label">
+        <Setter Property="FontFamily" Value="Comic-Sans"/>
+        <Setter Property="FontSize" Value="10pt"/>
+        <Setter Property="Foreground" Value="NavajoWhite"/>
+    </Style>
+    
+    <Style x:Key="TBL" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Comic-Sans"/>
+        <Setter Property="FontSize" Value="12pt"/>
+        <Setter Property="Foreground" Value="DarkBlue"/>
+        <Setter Property="Background" Value="LightBlue" />
+    </Style>
+    
+    <Style x:Key="TBO" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="Comic-Sans"/>
+        <Setter Property="FontSize" Value="12pt"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>   
+    
+</ResourceDictionary>

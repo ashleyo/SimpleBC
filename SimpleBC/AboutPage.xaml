@@ -1,0 +1,74 @@
+﻿<Window x:Class="SimpleBC.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimpleBC"
+      mc:Ignorable="d" 
+      Title="AboutPage" MaxWidth="600">
+
+    <DockPanel>
+        <ScrollViewer DockPanel.Dock="Top">
+        <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                        <Setter Property="Padding" Value="10, 0, 0, 10"/>
+                        <Setter Property="LineHeight" Value="1.25" />
+                    </Style>
+                </StackPanel.Resources>
+            
+
+            <Label FontSize="18">Simple Block Chain Demo</Label>
+            <TextBlock>
+            A visual demonstration of a block chain, suggested by Anders Brownworth's excellent 
+            YouTube 'Blockchain 101 - A Visual Demo' which can be found 
+            <Hyperlink NavigateUri="https://www.youtube.com/watch?v=_160oMzblY8&amp;t=11s" RequestNavigate="Hyperlink_Request" >here</Hyperlink>.
+            <LineBreak /> <LineBreak /> 
+                A block may be 'signed'. This means that the hash satisfies some condition. For this demo the 
+                (simple) condition is that the Hash should start with "0000.....". Visually, a signed block will 
+                have a green background and an unsigned one a red background<LineBreak /> 
+                The hash of a block is calculated from four things;<LineBreak /> 
+                i) its ID (immutable after creation in this demo), <LineBreak /> 
+                ii) its Nonce (an editable arbitrary positive integer)<LineBreak />
+                iii) its Data payload<LineBreak />
+                iv) the hash of the previous block (apart from block ID=0 which gets a constant previous hash))
+                <LineBreak /> <LineBreak />               
+                A block may be 'mined' by pressing its Mine button. This basically means find a nonce 
+                (for given ID, Data, and Previous Hash) that will cause the new hash to satisfy the signing condition.
+                Given how hashes work, such a nonce is unpredictable.<LineBreak /> 
+                Nonces could be tried randomly, but here we
+                simply begin at 0 and try each integer in turn until we find one that works. This has the advantage that
+                <Italic>ceteris paribus</Italic> you would get the same nonce on repeated trials.
+                <LineBreak /> 
+                Mining can take a long time - nonces  >100k are not unusual. 
+                More stringent hashing algorithms than SHA1 will cause it to take longer still
+                (the nonce expectation depends only on the signing condition but calculating the new 
+                hash will take longer and this has to be done for every trial nonce).
+                <LineBreak />
+                </TextBlock>
+            <Label FontSize="18">Takeaway</Label>
+                <TextBlock>
+                The key thing to note here is how, changing any block causes a cascade of changes down the chain;
+                the edited blocks and all blocks following it become unsigned.<LineBreak /> The chain <Italic>could</Italic>
+                be re-mined - one block at a time - but this could be colossally expensive with a stringent signing condition.
+                </TextBlock>
+                <Label FontSize="18">Configuration</Label>
+                <TextBlock>
+                    The hashing algorithm can be changed via the  
+                    initialization in the MainWindow constructor, see the comment there.<LineBreak />
+                    The signing condition can be changed by altering signKey in the Block class in the Block.cs file. A block is signed if its hash <Bold>starts with</Bold> signKey.
+                    <LineBreak />
+                    An enhancement would be to support passing a RexEx here rather than a simple string.
+                    Setting a signKey that can never be matched (eg longer than the hash, containing characters other than [0-9a-f] will cause
+                    mining to c
+
+                </TextBlock>
+
+                <Button Click="Button_Click"  Height="40" Width="70" Background="Red">Close</Button>
+            </StackPanel>
+            
+        </ScrollViewer>
+        
+    </DockPanel>
+</Window>
